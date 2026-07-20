@@ -8,7 +8,7 @@
 
 # @tensorplay/mega-ui
 
-`@tensorplay/mega-ui` is a Vue 3 component library for building clear, consistent MEGA interfaces. It includes reusable controls, form fields, dialogs, status views, settings components, and the accompanying styles.
+`@tensorplay/mega-ui` is a Vue 3 component library for building clear, consistent MEGA interfaces. It pairs reusable controls, form fields, dialogs, status views, settings components, and a shared visual language in one installable package.
 
 ## Install
 
@@ -36,6 +36,10 @@ import "@tensorplay/mega-ui/styles.css";
 </template>
 ```
 
+## Build with it
+
+Import named components from the package root and use the shared stylesheet once per application. The library is designed for composition: start with a small control such as `UiButton` or `UiTextField`, then combine dialogs, menus, directory views, and settings views as your interface grows.
+
 ## Included building blocks
 
 - Buttons, icons, avatars, badges, alerts, loading states, and toasts
@@ -46,9 +50,21 @@ import "@tensorplay/mega-ui/styles.css";
 
 Components are individually exported from the package root, so applications can import only what they use.
 
+| Export | Use it for |
+| --- | --- |
+| `@tensorplay/mega-ui` | Vue components, helpers, and types |
+| `@tensorplay/mega-ui/styles.css` | The shared MEGA stylesheet |
+| `@tensorplay/mega-ui/ai-icons/*` | AI application artwork |
+
 ## Assets
 
 The package also exposes AI application artwork through `@tensorplay/mega-ui/ai-icons/*`. Use these paths when integrating components such as `OAuthApplicationLogo` or when rendering a supported application icon yourself.
+
+## Explore MEGA
+
+- [MEGA Hub](https://mega.tensorplay.cn/)
+- [MEGA Hub source](https://github.com/ohtensorplay/mega-hub)
+- [MEGA Agent Skills](https://github.com/ohtensorplay/mega-skills)
 
 ## License
 
