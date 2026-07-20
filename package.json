@@ -1,0 +1,70 @@
+{
+  "name": "@tensorplay/mega-ui",
+  "version": "0.1.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ohtensorplay/mega-ui"
+  },
+  "description": "The shared Vue design system for MEGA applications.",
+  "type": "module",
+  "license": "MIT",
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist",
+    "README.md",
+    "SNAPSHOT.json"
+  ],
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/mega-ui.css",
+    "./ai-icons/*": "./dist/ai-icons/*",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "scripts": {
+    "sync:hub": "node scripts/sync-from-hub.mjs",
+    "check:snapshot": "node scripts/check-snapshot.mjs",
+    "check:upstream": "node scripts/check-snapshot.mjs --upstream ../mega-hub/web",
+    "typecheck": "vue-tsc --noEmit",
+    "build": "npm run check:snapshot && vite build && vue-tsc -p tsconfig.build.json",
+    "check:pack": "node scripts/check-pack.mjs",
+    "check": "npm run check:snapshot && npm run typecheck && npm run build && npm run check:pack",
+    "prepack": "npm run build"
+  },
+  "peerDependencies": {
+    "pinia": "^3.0.4",
+    "vue": "^3.5.39",
+    "vue-router": "^4.6.4"
+  },
+  "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.3.0",
+    "@lucide/vue": "^1.24.0",
+    "katex": "^0.17.0",
+    "marked": "^18.0.6"
+  },
+  "devDependencies": {
+    "@lobehub/icons-static-svg": "^1.91.0",
+    "@types/node": "^26.1.1",
+    "@vitejs/plugin-vue": "^6.0.7",
+    "pinia": "^3.0.4",
+    "typescript": "^5.8.3",
+    "vite": "^7.1.7",
+    "vue": "^3.5.39",
+    "vue-router": "^4.6.4",
+    "vue-tsc": "^3.3.7"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
