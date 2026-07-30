@@ -9,6 +9,9 @@ const sourceRoot = resolve(process.env.MEGA_HUB_WEB_SOURCE?.trim() || resolve(re
 const copiedPaths = [
   "src/design-system.css",
   "src/settings-system.css",
+  "src/assets/brand/mega-coin.png",
+  "src/shared/browser/clipboard.ts",
+  "src/shared/format/date.ts",
   "src/shared/ui",
   "src/shared/content/markdown-renderer.ts",
   "src/shared/content/markdown-math.ts",

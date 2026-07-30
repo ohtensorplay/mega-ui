@@ -15,9 +15,9 @@ defineProps<{
 <template>
   <div class="account-record-layout">
     <aside class="account-record-card" :aria-label="accessibleLabel">
-      <header><span>{{ scopeLabel }}</span><strong>{{ recordCode }}</strong></header>
-      <div class="account-record-principal"><span class="account-record-avatar"><slot name="avatar" /></span><div><span>@{{ handle }}</span><strong>{{ displayName }}</strong><small>{{ secondary }}</small></div></div>
-      <dl class="account-record-facts"><div v-for="fact in facts.slice(0, 2)" :key="fact.label"><dt>{{ fact.label }}</dt><dd>{{ fact.value }}</dd></div></dl>
+      <header><span>{{ scopeLabel }}</span><strong :title="recordCode">{{ recordCode }}</strong></header>
+      <div class="account-record-principal"><span class="account-record-avatar"><slot name="avatar" /></span><div><span :title="`@${handle}`">@{{ handle }}</span><strong :title="displayName">{{ displayName }}</strong><small :title="secondary">{{ secondary }}</small></div></div>
+      <dl class="account-record-facts"><div v-for="fact in facts.slice(0, 2)" :key="fact.label"><dt>{{ fact.label }}</dt><dd :title="fact.value">{{ fact.value }}</dd></div></dl>
       <footer><span class="settings-ui-signal" aria-hidden="true"></span><span>{{ footer }}</span></footer>
     </aside>
     <div class="account-record-details"><slot /><div v-if="$slots.action" class="settings-section-actions account-record-actions"><slot name="action" /><small v-if="actionHint">{{ actionHint }}</small></div></div>

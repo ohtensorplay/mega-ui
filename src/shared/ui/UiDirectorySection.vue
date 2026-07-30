@@ -35,7 +35,7 @@ const headingId = useId();
 @layer components {
 .ui-directory-section { padding-bottom: var(--space-16); border-bottom: 1px solid var(--border-subtle); }
 .ui-directory-section__header { padding: var(--space-4); border-bottom: 1px solid var(--border-subtle); }
-.ui-directory-section__header h2 { margin: 0; color: var(--text-muted); font-family: var(--font-ui); font-size: var(--font-size-micro); font-weight: var(--font-weight-medium); letter-spacing: .02em; text-transform: uppercase; }
+.ui-directory-section__header h2 { margin: 0; color: var(--text-muted); font-family: var(--font-ui); font-size: var(--font-size-label); font-weight: var(--font-weight-medium); letter-spacing: .02em; text-transform: uppercase; }
 .ui-directory-section__grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-bottom: 1px solid var(--border-subtle); }
 .ui-directory-section__item { --ui-directory-marker: var(--icon-docs); display: grid; grid-template-columns: 7px minmax(0, 1fr); gap: var(--space-3); align-content: center; min-width: 0; min-height: 82px; padding: var(--space-5); color: var(--text-primary); border-right: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle); }
 .ui-directory-section__item:nth-child(3n) { border-right: 0; }

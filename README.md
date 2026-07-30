@@ -45,7 +45,9 @@ Import named components from the package root and use the shared stylesheet once
 - Buttons, icons, avatars, badges, alerts, loading states, and toasts
 - Text, number, select, range, checkbox, radio, and search controls
 - Dialogs, menus, pagination, filter controls, and file dropzones
+- Copy-safe long values and selectable, copyable code blocks
 - Directory, settings, account, and status views
+- Catalog sections, resource cards, and split `owner/name` repository links
 - Markdown rendering and editing helpers
 
 Components are individually exported from the package root, so applications can import only what they use.

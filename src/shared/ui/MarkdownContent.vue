@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import { computed, nextTick, onMounted, ref, watch } from "vue";
+import { computed, h, nextTick, onMounted, ref, watch } from "vue";
 
 import { renderMarkdownDocument, type MarkdownHeading, type MarkdownRenderOptions } from "../content/markdown-renderer";
 import { renderMarkdownMath } from "../content/markdown-math";
+import UiCodeBlock from "./UiCodeBlock.vue";
 
 const props = withDefaults(defineProps<{
   source: string;
@@ -12,7 +13,10 @@ const props = withDefaults(defineProps<{
 });
 const emit = defineEmits<{ headings: [headings: MarkdownHeading[]] }>();
 const root = ref<HTMLElement | null>(null);
-const document = computed(() => renderMarkdownDocument(props.source, { resolveUrl: props.resolveUrl }));
+const document = computed(() => renderMarkdownDocument(props.source, {
+  resolveUrl: props.resolveUrl,
+  renderCodeBlock: ({ code, language }) => h(UiCodeBlock, { code, language }),
+}));
 const MarkdownNodes = () => document.value.nodes;
 
 async function enhance(): Promise<void> {

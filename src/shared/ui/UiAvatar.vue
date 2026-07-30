@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { computed } from "vue";
-import { Atom, Blocks, Braces, Building2, CircuitBoard, Landmark, Mountain, Network, Orbit, Rocket, Sparkles, Waves } from "@lucide/vue";
+import { Atom, Blocks, Bot, Braces, Building2, CircuitBoard, KeyRound, Landmark, Mountain, Network, Orbit, Rocket, Sparkles, Waves } from "@lucide/vue";
 
 const props = withDefaults(defineProps<{
   seed: string;
-  kind?: "user" | "organization" | "official";
+  kind?: "user" | "organization" | "official" | "service_account" | "bot";
   src?: string | null;
   label?: string;
 }>(), {
@@ -29,14 +29,18 @@ const organizationArt = [
   { name: "blocks", icon: Blocks },
   { name: "landmark", icon: Landmark },
 ] as const;
+const serviceAccountArt = [{ name: "service-account", icon: KeyRound }] as const;
+const botArt = [{ name: "bot", icon: Bot }] as const;
 
-const imageSource = computed(() => props.src || (
-  props.kind === "official" || props.seed.trim().toLocaleLowerCase() === "mega"
-    ? "/favicon-512.png"
-    : null
-));
+const imageSource = computed(() => props.src || null);
 const art = computed(() => {
-  const choices = props.kind === "organization" || props.kind === "official" ? organizationArt : userArt;
+  const choices = props.kind === "service_account"
+    ? serviceAccountArt
+    : props.kind === "bot"
+      ? botArt
+      : props.kind === "organization" || props.kind === "official"
+        ? organizationArt
+        : userArt;
   return choices[seedIndex(props.seed, choices.length)]!;
 });
 const avatarClasses = computed(() => {
@@ -76,5 +80,7 @@ function seedIndex(seed: string, length: number): number {
 .ui-avatar--network { color: var(--text-primary); background: #d7e597; }
 .ui-avatar--blocks { color: var(--surface); background: #7a4e96; }
 .ui-avatar--landmark { color: var(--surface); background: #835f35; }
+.ui-avatar--service_account { color: #082e46; background: #8ad7f0; }
+.ui-avatar--bot { color: #f8f6ff; background: #5b4b92; }
 .ui-avatar--image { color: inherit; background: var(--surface); }
 </style>

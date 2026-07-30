@@ -14,8 +14,28 @@ const allowedAttributes = new Set(["alt", "checked", "class", "colspan", "disabl
 const marked = new Marked({ gfm: true, breaks: false, async: false });
 
 export type MarkdownHeading = { id: string; text: string; depth: number };
-export type MarkdownRenderOptions = { resolveUrl?: (url: string, kind: "link" | "image") => string };
+export type MarkdownCodeBlock = { code: string; language?: string };
+export type MarkdownRenderOptions = {
+  resolveUrl?: (url: string, kind: "link" | "image") => string;
+  renderCodeBlock?: (block: MarkdownCodeBlock) => VNodeChild;
+};
 export type MarkdownDocument = { nodes: VNodeChild[]; headings: MarkdownHeading[] };
+
+export function markdownHeadings(markdown: string): MarkdownHeading[] {
+  const headingCounts = new Map<string, number>();
+  const headings: MarkdownHeading[] = [];
+
+  for (const token of marked.lexer(normalizeMarkdown(markdown))) {
+    if (token.type !== "heading" || token.depth < 2 || token.depth > 3) continue;
+    const text = token.text.trim();
+    const base = slugify(text);
+    const count = headingCounts.get(base) ?? 0;
+    headingCounts.set(base, count + 1);
+    headings.push({ id: count ? `${base}-${count + 1}` : base, text, depth: token.depth });
+  }
+
+  return headings;
+}
 
 export function renderMarkdownDocument(markdown: string, options: MarkdownRenderOptions = {}): MarkdownDocument {
   if (typeof DOMParser === "undefined") return { nodes: [markdown], headings: [] };
@@ -27,7 +47,7 @@ export function renderMarkdownDocument(markdown: string, options: MarkdownRender
     text: heading.textContent?.replace(/#$/, "").trim() ?? "",
     depth: Number(heading.tagName.slice(1)),
   })).filter((heading) => heading.id && heading.text);
-  return { nodes: childrenToVNodes(document.querySelector("main")!), headings };
+  return { nodes: childrenToVNodes(document.querySelector("main")!, options), headings };
 }
 
 export function normalizeMarkdown(markdown: string): string {
@@ -69,19 +89,29 @@ function renderer(options: MarkdownRenderOptions): Renderer {
   return output;
 }
 
-function childrenToVNodes(parent: ParentNode): VNodeChild[] {
+function childrenToVNodes(parent: ParentNode, options: MarkdownRenderOptions): VNodeChild[] {
   return [...parent.childNodes].flatMap((node) => {
-    const child = nodeToVNode(node);
+    const child = nodeToVNode(node, options);
     return child === null ? [] : [child];
   });
 }
 
-function nodeToVNode(node: Node): VNodeChild | null {
+function nodeToVNode(node: Node, options: MarkdownRenderOptions): VNodeChild | null {
   if (node.nodeType === Node.TEXT_NODE) return node.textContent ?? "";
   if (!(node instanceof HTMLElement)) return null;
   const tag = node.tagName.toLowerCase();
   if (blockedTags.has(tag)) return null;
-  const children = childrenToVNodes(node);
+  if (tag === "pre" && options.renderCodeBlock) {
+    const code = node.firstElementChild;
+    if (code?.tagName.toLowerCase() === "code") {
+      const languageClass = [...code.classList].find((name) => name.startsWith("language-"));
+      return options.renderCodeBlock({
+        code: code.textContent ?? "",
+        language: languageClass?.slice("language-".length) || undefined,
+      });
+    }
+  }
+  const children = childrenToVNodes(node, options);
   if (!allowedTags.has(tag)) return h(Fragment, null, children);
   const attributes: Record<string, string | boolean> = {};
   for (const attribute of [...node.attributes]) {

@@ -149,7 +149,7 @@ onUnmounted(syncDocumentState);
         <header class="ds-dialog-head">
           <div class="ds-dialog-heading">
             <p v-if="eyebrow" class="ds-dialog-eyebrow">{{ eyebrow }}</p>
-            <h2 :id="`${dialogId}-title`" class="ds-dialog-title">{{ title }}</h2>
+            <h2 :id="`${dialogId}-title`" class="ds-dialog-title"><slot name="title">{{ title }}</slot></h2>
             <p v-if="description" :id="`${dialogId}-description`" class="ds-dialog-description">{{ description }}</p>
           </div>
           <button class="ds-dialog-close" type="button" :aria-label="closeLabel" :disabled="!canDismiss" @click="close">×</button>
