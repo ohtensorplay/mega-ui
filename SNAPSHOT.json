@@ -2,6 +2,9 @@
   "schemaVersion": 1,
   "source": "mega-hub/web",
   "sourceCommit": "aadb4dbb6e5515863f5361679a4459aa92ce496b",
+  "reviewedExtensions": [
+    "UiButton.vue from mega-hub 1080bcea45698822995ad06249d4070a558574db"
+  ],
   "files": {
     "scripts/ai-icon-library.ts": "d49914c211df65f6e490bb3b6260e512f6358c58fea91f0ce9ff80e15bd94010",
     "src/assets/brand/mega-coin.png": "029dd2a0d119079123cd21786ecbb0a9aa3900abba098f221871554c09991875",
@@ -24,7 +27,7 @@
     "src/shared/ui/UiAlert.vue": "6a7d2de92f24888ddcb098098ed112ff15a66b3338667b3fb5208f8003af1a97",
     "src/shared/ui/UiAvatar.vue": "11c433f27cd91a5d9120cb26099eb9d4f61d5f500ff1817b98cedc653e8c5ee1",
     "src/shared/ui/UiBrandIcon.vue": "bf4554869895e9db79763f73b2d5dcf5d43d7a33703353cf4a7634bdc075e0fd",
-    "src/shared/ui/UiButton.vue": "f1842f442a60d27a4c62002d19b36e7995353872663fc19be1d1cd27b130635b",
+    "src/shared/ui/UiButton.vue": "20c69615cba54e142a3910236007ba2deac12ae581ae04827099c4a2c827fa88",
     "src/shared/ui/UiCheckbox.vue": "167b914063c737d4bc80f671b424962493b41287868d251cd22bb20a695b6103",
     "src/shared/ui/UiCheckboxInput.vue": "dcf8d4bf87f053c522c486d74ddfc155eb49e85c70a08744b8c8d8b117b82da1",
     "src/shared/ui/UiChoiceCard.vue": "179c9e6f5ef44d8feaa4b8712aa9dc119e5315df40824d9ce4e2fe5bbdb8cc67",

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
 import { RouterLink } from "vue-router";
-import UiSpinner from "./UiSpinner.vue";
 
 const props = withDefaults(defineProps<{
   type?: "button" | "submit" | "reset";
@@ -53,8 +52,7 @@ defineExpose({ focus: () => root.value?.focus() });
     :aria-pressed="pressed"
     @click="handleClick"
   >
-    <UiSpinner v-if="loading" size="sm" label="Working" />
-    <slot v-else name="leading" />
+    <slot name="leading" />
     <span class="ui-button__label"><slot /></span>
     <slot name="trailing" />
   </component>
