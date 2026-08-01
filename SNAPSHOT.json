@@ -3,7 +3,8 @@
   "source": "mega-hub/web",
   "sourceCommit": "aadb4dbb6e5515863f5361679a4459aa92ce496b",
   "reviewedExtensions": [
-    "UiButton.vue from mega-hub 1080bcea45698822995ad06249d4070a558574db"
+    "UiButton.vue from mega-hub 1080bcea45698822995ad06249d4070a558574db",
+    "UiVerificationCodeField.vue synchronized with mega-hub working tree 2026-08-02"
   ],
   "files": {
     "scripts/ai-icon-library.ts": "d49914c211df65f6e490bb3b6260e512f6358c58fea91f0ce9ff80e15bd94010",
@@ -93,6 +94,7 @@
     "src/shared/ui/UiTextarea.vue": "f1a04fcdd62f383102d4dec37ec7d946ee27f7e820ee18258032d450705008f4",
     "src/shared/ui/UiTextField.vue": "e50420fe0c274e36735a308bc870c913e86fde517ad7b39d7c90a1b41c61b0c0",
     "src/shared/ui/UiTextInput.vue": "f21b5c21d96e9187fa4887e90b992c61f903392a6fc5d8cf093976ed96a89819",
-    "src/shared/ui/UiToast.vue": "a663c561dbcd4dd9f61c502b464969b23aa8f59f1b731a7aa256a76ae0e9d181"
+    "src/shared/ui/UiToast.vue": "a663c561dbcd4dd9f61c502b464969b23aa8f59f1b731a7aa256a76ae0e9d181",
+    "src/shared/ui/UiVerificationCodeField.vue": "683ca7de0bea6b188f6337e8e4571d201807944f852a91fda09eead7513e39f3"
   }
 }

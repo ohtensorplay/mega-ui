@@ -77,6 +77,7 @@ export { default as UiTextarea } from "./shared/ui/UiTextarea.vue";
 export { default as UiTextField } from "./shared/ui/UiTextField.vue";
 export { default as UiTextInput } from "./shared/ui/UiTextInput.vue";
 export { default as UiToast } from "./shared/ui/UiToast.vue";
+export { default as UiVerificationCodeField } from "./shared/ui/UiVerificationCodeField.vue";
 export * from "./shared/ui/notice";
 export type { MarkdownHeading, MarkdownRenderOptions } from "./shared/content/markdown-renderer";
 export { aiApplicationIconNames, matchAiApplicationIcon, resolveAiApplicationLogo } from "./shared/lib/ai-application-logo";
