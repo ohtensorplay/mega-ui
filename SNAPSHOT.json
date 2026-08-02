@@ -4,7 +4,8 @@
   "sourceCommit": "aadb4dbb6e5515863f5361679a4459aa92ce496b",
   "reviewedExtensions": [
     "UiButton.vue from mega-hub 1080bcea45698822995ad06249d4070a558574db",
-    "UiVerificationCodeField.vue synchronized with mega-hub working tree 2026-08-02"
+    "UiVerificationCodeField.vue synchronized with mega-hub working tree 2026-08-02",
+    "UiStatePage.vue optional eyebrow for IAM editorial cleanup 2026-08-02"
   ],
   "files": {
     "scripts/ai-icon-library.ts": "d49914c211df65f6e490bb3b6260e512f6358c58fea91f0ce9ff80e15bd94010",
@@ -87,7 +88,7 @@
     "src/shared/ui/UiSettingsUpgrade.vue": "e81ac85469f0c25e983aa6580963ff20acf56b41b2ac70a85dc520566a7dfc47",
     "src/shared/ui/UiSpinner.vue": "e5928770475ceda376a0442ad4798c5f68f4e3346af2c457cc868df0d8131e67",
     "src/shared/ui/UiSplitMenu.vue": "95b06085a9ef059f5ccfd8c4b9de0da4936265df11c13082b7567e3861726ef1",
-    "src/shared/ui/UiStatePage.vue": "7654ad019821433d172a6bd43b238a3975afbaca71e823b9d273eea443ec0b93",
+    "src/shared/ui/UiStatePage.vue": "fa9dc3ceca20d23141573414ec2bd25652db766d299314ce481b52912b8f9536",
     "src/shared/ui/UiStatusBadge.vue": "192b7abff7db828c253b7c42d621faf38dad0050d7cc82ebc6bada42c3660f51",
     "src/shared/ui/UiSubscriptionBenefits.vue": "a492dd944c5afd9e1ce0ea58e6fc5428d8d8d355f675a9100d008f83f968d138",
     "src/shared/ui/UiSwitch.vue": "df6771833fce08d4dd32dd6f2ea57739a19838e149e16da9400ccd7b0f81b7eb",

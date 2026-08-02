@@ -1,6 +1,6 @@
 <script setup lang="ts">
 withDefaults(defineProps<{
-  eyebrow: string;
+  eyebrow?: string;
   title: string;
   message: string;
   role?: "status" | "alert";
@@ -8,12 +8,13 @@ withDefaults(defineProps<{
 }>(), {
   role: "status",
   titleId: "state-page-title",
+  eyebrow: undefined,
 });
 </script>
 
 <template>
   <section class="ui-state-page" :role="role" :aria-labelledby="titleId">
-    <p class="ui-state-page__eyebrow">{{ eyebrow }}</p>
+    <p v-if="eyebrow" class="ui-state-page__eyebrow">{{ eyebrow }}</p>
     <div class="ui-state-page__mark" aria-hidden="true"><slot name="visual" /></div>
     <h1 :id="titleId">{{ title }}</h1>
     <p class="ui-state-page__message">{{ message }}</p>
